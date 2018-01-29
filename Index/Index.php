@@ -1,7 +1,7 @@
 <?php
+
 namespace Versh\SphinxBundle\Index;
 
-use Foolz\SphinxQL\SphinxQL;
 use Versh\SphinxBundle\Client\Client;
 
 class Index
@@ -21,8 +21,6 @@ class Index
         $this->name = $name;
         $this->client = $client;
     }
-
-
 
     public function drop(): bool
     {
@@ -91,5 +89,4 @@ class Index
 
         return $result->getAffectedRows();
     }
-
 }

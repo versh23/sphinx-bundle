@@ -2,7 +2,6 @@
 
 namespace Versh\SphinxBundle\DependencyInjection;
 
-
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -18,15 +17,12 @@ use Versh\SphinxBundle\Persister\ObjectPersisterManager;
 
 class VershSphinxExtension extends ConfigurableExtension
 {
-
-
     /**
      * Configures the passed container according to the merged configuration.
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
-
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
 
         $def = $container->getDefinition(Client::class);
@@ -48,8 +44,6 @@ class VershSphinxExtension extends ConfigurableExtension
 
             $indexesRefs[$indexName] = new Reference($indexId);
 
-
-
             $persisterId = sprintf('versh_sphinx.persister.%s', $indexName);
             $persisterDef = new ChildDefinition(ObjectPersister::class);
             $persisterDef->replaceArgument(0, $index['method']);
@@ -58,7 +52,6 @@ class VershSphinxExtension extends ConfigurableExtension
             $container->setDefinition($persisterId, $persisterDef);
 
             $persisterRefs[$indexName] = $persisterDef;
-
 
             $finderId = sprintf('versh_sphinx.finder.%s', $indexName);
             $finderDef = new ChildDefinition(IndexFinder::class);
@@ -72,6 +65,5 @@ class VershSphinxExtension extends ConfigurableExtension
 
         $persisterManagerDef = $container->getDefinition(ObjectPersisterManager::class);
         $persisterManagerDef->replaceArgument(0, $persisterRefs);
-
     }
 }

@@ -1,6 +1,6 @@
 <?php
-namespace Versh\SphinxBundle\DependencyInjection;
 
+namespace Versh\SphinxBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
             ->end()
         ;
     }
+
     /**
      * Generates the configuration tree builder.
      *
@@ -40,7 +41,6 @@ class Configuration implements ConfigurationInterface
 
         $this->addConnectionSection($rootNode);
         $this->addIndexesSection($rootNode);
-
 
         return $treeBuilder;
     }

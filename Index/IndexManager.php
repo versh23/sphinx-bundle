@@ -2,7 +2,6 @@
 
 namespace Versh\SphinxBundle\Index;
 
-
 class IndexManager
 {
     /**
@@ -14,7 +13,6 @@ class IndexManager
     {
         $this->indexes = $indexes;
     }
-
 
     public function getAllIndexes()
     {

@@ -6,19 +6,15 @@ use Foolz\SphinxQL\Drivers\Mysqli\Connection;
 use Foolz\SphinxQL\Exception\DatabaseException;
 use Foolz\SphinxQL\SphinxQL;
 
-
 class Client
 {
     private $connection;
 
-
     public function __construct(array $params)
     {
-
         $this->connection = new Connection();
         $this->connection->setParams($params);
         $this->connection->mbPush();
-
     }
 
     public function createBuilder()
@@ -38,12 +34,9 @@ class Client
     {
         $query = sprintf('drop table %s', $tableName);
 
-        try{
+        try {
             $this->connection->query($query);
-        }
-        catch (DatabaseException $exception)
-        {
-            //
+        } catch (DatabaseException $exception) {
             return false;
         }
 
@@ -54,24 +47,20 @@ class Client
     {
         $fieldsAndAttributes = [];
         foreach ($fields as $name => $params) {
-            $fieldsAndAttributes[] = $name.' field '.($params['stored'] ? 'stored': '');
+            $fieldsAndAttributes[] = $name.' field '.($params['stored'] ? 'stored' : '');
         }
 
         foreach ($attributes as $name => $params) {
             $fieldsAndAttributes[] = $name.' '.$params['type'];
         }
 
-        $params = implode($fieldsAndAttributes,', ');
+        $params = implode($fieldsAndAttributes, ', ');
 
         $query = sprintf('create table %s (%s)', $tableName, $params);
 
-
-        try{
+        try {
             $this->connection->query($query);
-        }
-        catch (DatabaseException $exception)
-        {
-            //
+        } catch (DatabaseException $exception) {
             return false;
         }
 

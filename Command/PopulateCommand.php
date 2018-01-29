@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Versh\SphinxBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -11,7 +10,6 @@ use Versh\SphinxBundle\Persister\ObjectPersisterManager;
 
 class PopulateCommand extends Command
 {
-
     /**
      * @var IndexManager
      */

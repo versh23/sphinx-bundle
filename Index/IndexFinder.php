@@ -2,7 +2,6 @@
 
 namespace Versh\SphinxBundle\Index;
 
-
 use Foolz\SphinxQL\SphinxQL;
 use Pagerfanta\Pagerfanta;
 use Versh\SphinxBundle\Paginator\PagefantaAdapter;
@@ -40,7 +39,6 @@ class IndexFinder
     {
         return $this->findPaginated($this->index->createBuilder()->match($query));
     }
-
 
     public function createBuilder()
     {

@@ -2,7 +2,6 @@
 
 namespace Versh\SphinxBundle\Persister;
 
-
 class ObjectPersisterManager
 {
     /**
@@ -19,6 +18,4 @@ class ObjectPersisterManager
     {
         return $this->persisters[$name];
     }
-
-
 }

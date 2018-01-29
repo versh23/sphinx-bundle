@@ -2,7 +2,6 @@
 
 namespace Versh\SphinxBundle\Paginator;
 
-
 use Foolz\SphinxQL\Helper;
 use Foolz\SphinxQL\SphinxQL;
 use Pagerfanta\Adapter\AdapterInterface;
@@ -10,7 +9,6 @@ use Versh\SphinxBundle\Persister\ObjectPersister;
 
 class PagefantaAdapter implements AdapterInterface
 {
-
     private $sphinxQL;
     private $persister;
 
@@ -23,7 +21,7 @@ class PagefantaAdapter implements AdapterInterface
     /**
      * Returns the number of results.
      *
-     * @return integer The number of results.
+     * @return int The number of results.
      */
     public function getNbResults()
     {
@@ -33,7 +31,7 @@ class PagefantaAdapter implements AdapterInterface
         $meta = $helper->showMeta()->execute()->fetchAllAssoc();
 
         foreach ($meta as $item) {
-            if($item['Variable_name'] === 'total_found') {
+            if ('total_found' === $item['Variable_name']) {
                 return (int) $item['Value'];
             }
         }
@@ -44,8 +42,8 @@ class PagefantaAdapter implements AdapterInterface
     /**
      * Returns an slice of the results.
      *
-     * @param integer $offset The offset.
-     * @param integer $length The length.
+     * @param int $offset The offset.
+     * @param int $length The length.
      *
      * @return array|\Traversable The slice.
      */

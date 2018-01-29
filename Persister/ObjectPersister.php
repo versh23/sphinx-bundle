@@ -2,7 +2,6 @@
 
 namespace Versh\SphinxBundle\Persister;
 
-
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -24,13 +23,11 @@ class ObjectPersister
     private $index;
     private $propertyAccessor;
 
-
     public function __construct(
         string $method, string  $class,
         Index $index, ManagerRegistry $doctrine,
         PropertyAccessorInterface $propertyAccessor
-    )
-    {
+    ) {
         $this->method = $method;
         $this->class = $class;
         $this->index = $index;
@@ -43,7 +40,6 @@ class ObjectPersister
      */
     private function getEntityQueryBuilder(): QueryBuilder
     {
-
         $repository = $this->doctrine
             ->getManagerForClass($this->class)
             ->getRepository($this->class);
@@ -72,10 +68,9 @@ class ObjectPersister
 
             $this->insertPage($page, $pager);
 
-            $page++;
+            ++$page;
         } while ($page <= $lastPage);
     }
-
 
     private function insertPage(int $page, Pagerfanta $pager)
     {
@@ -90,29 +85,24 @@ class ObjectPersister
             $values[] = $valueObject;
         }
 
-
         $this->index->bulkInsert($columns, $values);
     }
-
 
     private function transformToSphinx($object): array
     {
         $fields = array_merge($this->index->getFields(), $this->index->getAttributes());
 
         $values = [];
-        $values[] = $this->propertyAccessor->getValue($object,self::ID);
+        $values[] = $this->propertyAccessor->getValue($object, self::ID);
         foreach ($fields as $field) {
             $values[] = $this->propertyAccessor->getValue($object, $field['path']);
         }
 
         $columns = array_keys($fields);
-        array_unshift( $columns, self::ID);
+        array_unshift($columns, self::ID);
 
         return [$columns, $values];
     }
-
-
-
 
     public function transformToEntity(array $sphinxResult, $hydrate = true)
     {
@@ -142,10 +132,7 @@ class ObjectPersister
             }
         );
 
-
         return $objects;
-
-
     }
 
     private function findByIdentifiers(array $identifierValues, $hydrate)
@@ -160,7 +147,6 @@ class ObjectPersister
             ->setParameter('values', $identifierValues);
 
         $query = $qb->getQuery();
-
 
         return $query->setHydrationMode($hydrationMode)->execute();
     }
