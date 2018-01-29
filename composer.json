@@ -1,5 +1,5 @@
 {
-    "name": "versh/sphinx-bundle",
+    "name": "versh/sphinx3-bundle",
     "type": "symfony-bundle",
     "description": "Sphinxsearch bundle",
     "keywords": ["sphinx", "search", "sphinxsearch"],
