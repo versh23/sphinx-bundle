@@ -1,0 +1,46 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+
+    Versh\SphinxBundle\Manager\IndexManager:
+        arguments:
+            - []
+
+
+
+
+
+
+    Versh\SphinxBundle\Command\PopulateCommand: ~
+    Versh\SphinxBundle\Index\Index:
+        public: true
+        abstract: true
+        arguments:
+            - ''
+            - []
+            - []
+    Versh\SphinxBundle\Index\IndexManager:
+        arguments:
+            - []
+    Versh\SphinxBundle\Client\Client:
+        arguments:
+            - []
+    Versh\SphinxBundle\Persister\ObjectPersister:
+        public: true
+        abstract: true
+        arguments:
+            - ''
+            - ''
+            - ''
+    Versh\SphinxBundle\Persister\ObjectPersisterManager:
+        arguments:
+            - []
+    Versh\SphinxBundle\Index\IndexFinder:
+        arguments:
+            - ''
+            - ''
+        abstract: true
+        public: true

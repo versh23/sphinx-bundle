@@ -1,0 +1,27 @@
+{
+    "name": "versh/sphinx-bundle",
+    "type": "symfony-bundle",
+    "description": "Sphinxsearch bundle",
+    "keywords": ["sphinx", "search", "sphinxsearch"],
+    "homepage": "https://github.com/FriendsOfSymfony/FOSElasticaBundle",
+    "license": "MIT",
+    "authors": [
+        { "name": "Vershinin Sergey", "email": "versh23@gmail.com" }
+    ],
+    "require": {
+        "php": "^7.1",
+        "symfony/framework-bundle": "^4",
+        "symfony/console": "^4",
+        "symfony/dependency-injection": "^4",
+        "symfony/property-access": "^4",
+        "pagerfanta/pagerfanta": "^1.0.5",
+        "doctrine/orm": "^2.5",
+        "symfony/yaml": "^3.2|^4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.2"
+    },
+    "autoload": {
+        "psr-4": { "Versh\\SphinxBundle\\": "" }
+    }
+}
